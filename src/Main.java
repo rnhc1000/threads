@@ -1,17 +1,69 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.ArrayList;
+import java.util.List;
+
+class MultiExecutor {
+
+	private final List<Runnable> tasks;
+
+	/*
+	 * @param tasks to executed concurrently
+	 */
+	public MultiExecutor(List<Runnable> tasks) {
+
+		this.tasks = tasks;
+	}
+
+	public MultiExecutor() {
+		this.tasks = null;
+	}
+
+	/**
+	 * Starts and executes all the tasks concurrently
+	 */
+	public void executeAll() {
+
+		Thread threadOne = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				System.out.println(Thread.currentThread().getName());
+			}
+		});
+		threadOne.setName("Cutting carrots");
+
+		Thread threadTwo = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				System.out.println(Thread.currentThread().getName());
+			}
+		});
+		threadTwo.setName("Cooking eggs");
+
+		Thread threadThree = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				System.out.println(Thread.currentThread().getName());
+			}
+		});
+		threadThree.setName("Washing dishes");
+
+		List<Runnable> threads = new ArrayList<>();
+		threads.add(threadOne);
+		threads.add(threadTwo);
+		threads.add(threadThree);
+
+		for (Runnable task : threads) {
+			((Thread) task).start();
+		}
+
+	}
+}
+
 public class Main {
-  public static void main(String[] args) {
-    // Press Alt+Enter with your caret at the highlighted text to see how
-    // IntelliJ IDEA suggests fixing it.
-    System.out.printf("Hello and welcome!");
 
-    // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-    for (int i = 1; i <= 5; i++) {
+	public static void main(String[] args) {
 
-      // Press Shift+F9 to start debugging your code. We have set one breakpoint
-      // for you, but you can always add more by pressing Ctrl+F8.
-      System.out.println("i = " + i);
-    }
-  }
+		MultiExecutor multi = new MultiExecutor();
+		multi.executeAll();
+
+	}
 }
