@@ -1,8 +1,8 @@
-package threadOne;
+package threadOne.FactorialThread;
 
 import java.math.BigInteger;
 
-public class Factorial extends Thread{
+public class Factorial extends Thread {
 
   private long inputNumber;
   private BigInteger result = BigInteger.ZERO;
@@ -21,9 +21,18 @@ public class Factorial extends Thread{
   private BigInteger factorial(long inputNumber) {
 
     BigInteger tempResult = BigInteger.ONE;
-    for (long i = inputNumber; i >0; i--) {
+    for (long i = inputNumber; i > 0; i--) {
       tempResult=tempResult.multiply(new BigInteger(Long.toString(i)));
     }
     return tempResult;
   }
+
+  public boolean isFinished() {
+    return isFinished;
+  }
+
+  public BigInteger getResult() {
+    return result;
+  }
+
 }
