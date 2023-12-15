@@ -64,6 +64,7 @@ public class Main {
 
 		MultiExecutor multi = new MultiExecutor();
 		multi.executeAll();
+		System.out.println("Teste");
 
 	}
 }
