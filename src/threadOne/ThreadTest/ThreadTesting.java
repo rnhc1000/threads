@@ -1,3 +1,5 @@
+package threadOne.ThreadTest;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,13 +60,12 @@ class MultiExecutor {
 	}
 }
 
-public class Main {
+public class ThreadTesting {
 
 	public static void main(String[] args) {
 
 		MultiExecutor multi = new MultiExecutor();
 		multi.executeAll();
-		System.out.println("Teste");
 
 	}
 }
