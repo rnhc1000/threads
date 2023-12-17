@@ -33,21 +33,22 @@ public class MWC {
     Map<String, Integer> map = new HashMap<>();
     int sizeOfCharacters = characters.size();
     for (String character : characters) {
-      map.put((character), sizeOfCharacters--);
+      map.put((character), 1);
     }
     System.out.println(map);
     int count = 1;
-
     int countM = 0, countW = 0, countC = 0;
     ArrayList<Character> people = new ArrayList<>();
     Map<String, Integer> counter = new HashMap<>();
     char[] c = crowd.toCharArray();
+    counter.put(String.valueOf(c[0]), 1);
     for (char s : c) {
+//      count = map.get(String.valueOf(s));
       if (map.containsKey(String.valueOf(s))) {
-//          count++;
-          counter.put(String.valueOf(s), count++);
+        count=counter.get(String.valueOf(s));
+        counter.put(String.valueOf(s), ++count);
       } else {
-        count=0;
+        counter.put(String.valueOf(s), 1);
       }
       switch (s) {
         case 'M' -> countM += 1;
@@ -62,9 +63,7 @@ public class MWC {
     people.add('W');
 
     if (countC == 0) {
-
       return people;
-
     } else {
       people.add((char) (countC + '0'));
       people.add('C');
