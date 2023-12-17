@@ -2,24 +2,24 @@ package HackerVault.entities;
 
 public class Vault {
 
-	private int password;
+  private int password;
 
-	public Vault(int password) {
-		this.password = password;
-	}
+  public Vault(int password) {
+    this.password = password;
+  }
 
-	public boolean isCorrectPassword(int guess) {
+  public boolean isCorrectPassword(int guess) {
 
-		try {
+    try {
 
-			Thread.sleep(5);
+      Thread.sleep(5);
 
-		} catch (InterruptedException ex) {
-			System.out.println(ex.getMessage());
-		}
+    } catch (InterruptedException ex) {
+      System.out.println(ex.getMessage());
+    }
 
-		return this.password == guess;
+    return this.password == guess;
 
-	}
+  }
 
 }

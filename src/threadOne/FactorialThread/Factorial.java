@@ -9,7 +9,7 @@ public class Factorial extends Thread {
   private boolean isFinished = false;
 
   public Factorial(long inputNumber) {
-    this.inputNumber=inputNumber;
+    this.inputNumber = inputNumber;
   }
 
   @Override
@@ -22,7 +22,7 @@ public class Factorial extends Thread {
 
     BigInteger tempResult = BigInteger.ONE;
     for (long i = inputNumber; i > 0; i--) {
-      tempResult=tempResult.multiply(new BigInteger(Long.toString(i)));
+      tempResult = tempResult.multiply(new BigInteger(Long.toString(i)));
     }
     return tempResult;
   }

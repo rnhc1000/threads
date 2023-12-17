@@ -1,13 +1,9 @@
 package IntelliJPractice;
 
-import javax.naming.TimeLimitExceededException;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.ThreadPoolExecutor;
 
 
 class CamelHumps {
@@ -40,6 +36,14 @@ public class HandlingIntelliJ {
     }
 
     List<String> l = Arrays.asList("a", "b");
+
+    //language=JSON Lines
+    String x = "{\n" +
+            "  \"name\": \"John\",\n" +
+            "\"age\":  30\n" +
+            "}";
+
+    String regex = "[a-zA-Z]*";
 
   }
 

@@ -2,33 +2,33 @@ package threadOne.ThreadInterruption;
 
 public class ThreadSInterruption {
 
-	public static void main(String[] args) {
+  public static void main(String[] args) {
 
-		Thread thread = new Thread(new BlockingTask());
-		thread.setName("T1");
-		System.out.println("Starting thread");
-		thread.start();
-		System.out.println(thread.getName());
+    Thread thread = new Thread(new BlockingTask());
+    thread.setName("T1");
+    System.out.println("Starting thread");
+    thread.start();
+    System.out.println(thread.getName());
 
-	}
+  }
 
-	private static class BlockingTask implements Runnable {
+  private static class BlockingTask implements Runnable {
 
-		@Override
-		public void run() {
-			try {
+    @Override
+    public void run() {
+      try {
 
-				Thread.sleep(5000);
+        Thread.sleep(5000);
 
-			} catch (InterruptedException ex) {
+      } catch (InterruptedException ex) {
 
-				System.out.println("Interrupted: " + ex.getMessage());
+        System.out.println("Interrupted: " + ex.getMessage());
 
-			} finally {
+      } finally {
 
-				System.out.println("Done!");
+        System.out.println("Done!");
 
-			}
-		}
-	}
+      }
+    }
+  }
 }

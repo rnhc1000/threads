@@ -1,9 +1,7 @@
 package threadOne.ComplexPower;
 
 import java.math.BigInteger;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ComplexCalculation {
@@ -17,24 +15,25 @@ public class ComplexCalculation {
     basis.put(14L, 2L);
     basis.put(16L, 2L);
 
-    for(Map.Entry<Long,Long> pair: basis.entrySet()) {
-      long r = (long)Math.pow(pair.getKey(), pair.getValue());
+    for (Map.Entry<Long, Long> pair : basis.entrySet()) {
+      long r = (long) Math.pow(pair.getKey(), pair.getValue());
       System.out.println(r);
     }
 
 
-    basis.forEach((k,v)-> System.out.println("key: " + k + " value: " + v));
+    basis.forEach((k, v) -> System.out.println("key: " + k + " value: " + v));
 
-    BigInteger b1,p1,b2,p2;
-    b1=BigInteger.TWO;
-    p1=BigInteger.ONE;
-    b2=BigInteger.TWO;
-    p2=BigInteger.TEN;
+    BigInteger b1, p1, b2, p2;
+    b1 = BigInteger.TWO;
+    p1 = BigInteger.ONE;
+    b2 = BigInteger.TWO;
+    p2 = BigInteger.TEN;
 
-    BigInteger resultOne = calculateResult(b1, p1, b2,p2);
+    BigInteger resultOne = calculateResult(b1, p1, b2, p2);
     System.out.println("Result is: " + resultOne);
 
   }
+
   public static BigInteger calculateResult(BigInteger base1, BigInteger power1, BigInteger base2, BigInteger power2) {
     BigInteger result;
 
@@ -49,7 +48,7 @@ public class ComplexCalculation {
       throw new RuntimeException(e);
     }
 
-    return  threadOne.getResult().add(threadTwo.getResult());
+    return threadOne.getResult().add(threadTwo.getResult());
 
   }
 
@@ -61,11 +60,6 @@ public class ComplexCalculation {
     public PowerCalculatingThread(BigInteger base, BigInteger power) {
       this.base = base;
       this.power = power;
-    }
-
-    @Override
-    public void run() {
-      result =  pow(base,power);
     }
 
     private static BigInteger pow(BigInteger base, BigInteger power) {
@@ -82,6 +76,13 @@ public class ComplexCalculation {
       return result;
     }
 
-    public BigInteger getResult() { return result; }
+    @Override
+    public void run() {
+      result = pow(base, power);
+    }
+
+    public BigInteger getResult() {
+      return result;
+    }
   }
 }
