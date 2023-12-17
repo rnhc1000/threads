@@ -1,3 +1,15 @@
+/*
+ * @(#)HandlingHashMap.java
+ * @author  Ricardo Ferreira
+ * @version 1.0
+ * @since   2023-03-31
+ * Copyright (c) 2005-2023 Datagen1x.
+ * Santo Agapito, 7, Imperatriz - MA, BR.
+ * All rights reserved.
+ * @param Given a list of Studentes and grades
+ * @return Student with the largest average.
+ *
+ */
 package IntelliJPractice;
 
 import java.util.HashMap;
