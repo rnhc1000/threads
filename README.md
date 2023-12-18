@@ -1,7 +1,7 @@
 ## Java Coding Daily - @Ricardo Ferreira
-The more senior you are the more you're involved with mentoring, helping, monitoring, discussing ideas and you have less time dedicated to code what is the most important activity for a programmer.
+The more senior you are the more you're involved with mentoring, helping, monitoring and discussing ideas, you have less time dedicated to code what is the most important activity for a programmer.
 To keep up with the recent developments and evolution of Java language there is no other solution than coding as much as you can, revisiting concepts, ideas, suggestions, doubts etc...
-Here I have meet my peace of mind and happiness in coding as much as I can.
+Here I have met my peace of mind and happiness in coding as much as I can.
 There are a bunch of challenges resolved my way. What I mean by that? No copy/paste from anywhere, doesn't matter the outcome of my solution. Sometimes you will find O(1) solutions but sometimes you will find some O(n2). So the deal is... Try to improve it and open up a PR...
 
 ## _Tools_
@@ -66,7 +66,7 @@ public class HandlingParenthesis {
       if (dictionary.containsKey(c)) {
         stack.push(c);
       } else if (dictionary.containsValue(c)) {
-        if (!stack.isEmpty() && dictionary.get(stack.peek()) == c) {
+        if (!stack.isEmpty() && dictionary.get(stack.peek()).equals(c)) {
           stack.pop();
         } else {
           return false;
