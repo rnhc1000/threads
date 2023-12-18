@@ -33,7 +33,7 @@ public class HandlingParenthesis {
       if (dictionary.containsKey(c)) {
         stack.push(c);
       } else if (dictionary.containsValue(c)) {
-        if (!stack.isEmpty() && dictionary.get(stack.peek()) == c) {
+        if (!stack.isEmpty() && dictionary.get(stack.peek()).equals(c)) {
           stack.pop();
         } else {
           return false;
