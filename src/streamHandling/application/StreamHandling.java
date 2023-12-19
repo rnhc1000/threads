@@ -59,13 +59,34 @@ public class StreamHandling {
     System.out.print("\nStudents Count by Department:\n");
     Map<String, Long> studentCount = studentCountByDepartment(students);
     for (Map.Entry<String, Long> entry : studentCount.entrySet()) {
-
       System.out.println("Department: " + entry.getKey() + " --- Count: " + entry.getValue());
+    }
+    System.out.println("Sorted List Of Students per Rank: ");
+    List<Student> rankedStudents = highestRanked(students);
+    for (Student s : rankedStudents) {
+      System.out.print("\n" + s);
+    }
 
+    System.out.print("\nAverage Rank By Department: ");
+    Map<String,Double> averageRank = averageRankByDepartment(students);
+    for (Map.Entry<String,Double> entry : averageRank.entrySet()) {
+      System.out.println("Department-> " + entry.getKey() + " - Rank: " + entry.getValue());
     }
     long end = System.currentTimeMillis();
     System.out.println("Time to compute list of students: " + (end - start) + " ms!");
     input.close();
+  }
+
+  public static Map<String, Double> averageRankByDepartment(List<Student> students) {
+    Map<String, Double> averageRank = new HashMap<>();
+    averageRank = students.stream()
+            .collect(Collectors.groupingBy(Student::department, Collectors.averagingDouble(Student::rank)));
+    return averageRank;
+  }
+  public static List<Student> highestRanked(List<Student> students) {
+    List<Student> highestRankedStudent = students.stream()
+            .sorted(Comparator.comparing(Student::rank)).toList();
+    return highestRankedStudent;
   }
 
   public static Map<String, Long> studentCountByDepartment(List<Student> students) {
@@ -75,10 +96,9 @@ public class StreamHandling {
                     .groupingBy(Student::department, Collectors.counting())
             );
     return returnMap;
-}
+  }
 
   public static Set<String> departmentId(List<Student> students) {
-
     System.out.println(students.stream().filter(x -> x.age() > 30).toList());
     return students.stream().map(x -> x.department()).collect(Collectors.toSet());
   }
