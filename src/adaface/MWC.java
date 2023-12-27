@@ -19,22 +19,7 @@ public class MWC {
   }
 
   public ArrayList<Character> Crowd(String crowd) {
-    String path = "/home/rferreira/dev/advancedJava/src/letters.txt";
-    List<String> characters = new ArrayList<>();
-    try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-      String line = "";
-      while ((line = br.readLine()) != null) {
-        characters.add(line);
-      }
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
-
-    Map<String, Integer> map = new HashMap<>();
-    int sizeOfCharacters = characters.size();
-    for (String character : characters) {
-      map.put((character), 1);
-    }
+    Map<String, Integer> map = getStringIntegerMap();
     System.out.println(map);
     int count = 1;
     int countM = 0, countW = 0, countC = 0;
@@ -71,6 +56,26 @@ public class MWC {
     return people;
   }
 
+  private static Map<String, Integer> getStringIntegerMap() {
+    String path = "/home/rferreira/dev/advancedJava/src/letters.txt";
+    List<String> characters = new ArrayList<>();
+    try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+      String line = "";
+      while ((line = br.readLine()) != null) {
+        characters.add(line);
+      }
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+
+    Map<String, Integer> map = new HashMap<>();
+    int sizeOfCharacters = characters.size();
+    for (String character : characters) {
+      map.put((character), 1);
+    }
+    return map;
+  }
+
   public static void main(String[] args) {
     String s = "MMMWWC";
     MWC str = new MWC();
@@ -82,3 +87,8 @@ public class MWC {
   }
 }
 
+/**
+ * for (Map.Entry<K,V> entry : map.entrySet() ) {
+ *   System.out.print("\n\n entry.getKey() + " " + entry.getValue());
+ * }
+ */
